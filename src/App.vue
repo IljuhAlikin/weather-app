@@ -2,13 +2,12 @@
   <main>
     <div class="container">
       <Header />
-      <font-awesome-icon icon="fa-solid fa-user-secret" />
       <div>
         <Search @place-data="addPlace" />
       </div>
       <div class="weather-wrapper">
         <div v-for="(place, index) in places" :key="index" class="weather-item">
-          <WeatherCard :place="place" />
+          <WeatherCard :place="place" @delete-place="deletePlace" />
         </div>
       </div>
     </div>
@@ -27,7 +26,9 @@ const addPlace = (data) => {
   places.value.push(data);
 };
 
-console.log(places);
+const deletePlace = (name) => {
+  places.value = places.value.filter((p) => p.location.name !== name);
+};
 </script>
 <style scoped>
 .weather-wrapper {
