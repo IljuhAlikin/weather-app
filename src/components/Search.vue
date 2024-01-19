@@ -14,7 +14,7 @@
   <div class="search__results">
     <div v-if="searchTerm.results">
       <div v-for="place in searchTerm.results" :key="place.id">
-        <button class="search__button">
+        <button @click="getWeather(place.id)" class="search__button">
           {{ place.name }}, {{ place.region }}, {{ place.country }}
         </button>
       </div>
@@ -23,6 +23,8 @@
 </template>
 <script setup>
 import { reactive, ref } from "vue";
+
+const emit = defineEmits(["place-data"]);
 
 const searchTerm = reactive({
   query: "",
@@ -45,6 +47,17 @@ const handleSearch = () => {
   }, 500);
 };
 
-const getWeather = (id) => {};
+const getWeather = async (id) => {
+  const res = await fetch(
+    `http://api.weatherapi.com/v1/forecast.json?key=6ba1c6c8793a451aaf6120152241801&q=id:${id}&days=3&aqi=no&alerts=no`
+  );
+
+  const data = await res.json();
+
+  emit("place-data", data);
+
+  searchTerm.query = "";
+  searchTerm.results = null;
+};
 </script>
 <style scoped></style>
