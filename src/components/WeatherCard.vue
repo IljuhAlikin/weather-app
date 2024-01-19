@@ -20,31 +20,37 @@
     <div v-for="(day, index) in place.forecast.forecastday" :key="index">
       <WeatherForecast :day="day" />
     </div>
-    <!-- <div class="more">
+    <div class="more" v-show="showDetail">
       <WeatherMore :place="place" />
-    </div> -->
+    </div>
+    <button @click="showDetail = true" class="show-more__button">More</button>
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
 import WeatherForecast from "./WeatherForecast.vue";
 import WeatherMore from "./WeatherMore.vue";
 defineProps({
   place: Object,
 });
+
+const showDetail = ref(false);
 </script>
 <style scoped>
 .weather-card {
-  background-color: #ffffff;
+  background-color: #0d82ca;
+  position: relative;
   border-radius: 10px;
   max-width: 360px;
   width: 100%;
   display: block;
+  padding: 35px;
 }
 .weather-card__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 35px 0px 35px;
+  padding: 0px;
   margin-bottom: 35px;
 }
 
@@ -67,6 +73,7 @@ defineProps({
 
 .weather-card__condition {
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .weather-card__condition p {

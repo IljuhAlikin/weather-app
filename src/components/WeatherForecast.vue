@@ -24,15 +24,13 @@ defineProps({
 <style scoped>
 .forecast {
 }
-.forecast__table {
-  display: flex;
-  flex-direction: column;
-}
 .forecast__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
+
 .forecast__day {
   width: 100px;
   max-width: 100px;

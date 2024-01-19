@@ -5,8 +5,8 @@
       <div>
         <Search @place-data="addPlace" />
       </div>
-      <div>
-        <div class="" v-for="(place, index) in places" :key="index">
+      <div class="weather-wrapper">
+        <div v-for="(place, index) in places" :key="index" class="weather-item">
           <WeatherCard :place="place" />
         </div>
       </div>
@@ -28,4 +28,17 @@ const addPlace = (data) => {
 
 console.log(places);
 </script>
-<style scoped></style>
+<style scoped>
+.weather-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 35px;
+}
+.weather-item {
+  flex: 1 1 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
