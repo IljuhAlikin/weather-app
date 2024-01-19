@@ -8,9 +8,17 @@
     <p>
       {{ place.current.condition.text }}
     </p>
+    <div v-for="(day, index) in place.forecast.forecastday" :key="index">
+      <WeatherForecast :day="day" />
+    </div>
+
+    <div class="more">
+      <button class="more__button">More</button>
+    </div>
   </div>
 </template>
 <script setup>
+import WeatherForecast from "./WeatherForecast.vue";
 defineProps({
   place: Object,
 });
