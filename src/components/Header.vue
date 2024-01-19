@@ -17,4 +17,9 @@
   </header>
 </template>
 <script setup></script>
-<style scoped></style>
+<style scoped>
+.header__column {
+  text-align: center;
+  margin-bottom: 20px;
+}
+</style>

@@ -1,5 +1,4 @@
 <template>
-  {{ searchTerm.query }}
   <form>
     <div class="form__wrapper">
       <input
@@ -60,4 +59,28 @@ const getWeather = async (id) => {
   searchTerm.results = null;
 };
 </script>
-<style scoped></style>
+<style scoped>
+.form__input {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  background-color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px;
+}
+
+.search__results {
+  background-color: #ffffff;
+  border-radius: 0px 0px 10px 10px;
+  /* padding: 20px; */
+}
+
+.search__button {
+  padding: 10px 0px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+</style>
