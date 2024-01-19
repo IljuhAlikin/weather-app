@@ -2,6 +2,7 @@
   <main>
     <div class="container">
       <Header />
+      <font-awesome-icon icon="fa-solid fa-user-secret" />
       <div>
         <Search @place-data="addPlace" />
       </div>
